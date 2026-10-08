@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Omar – Software Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FAFAFB; --surface:#FFFFFF; --ink:#101218; --mid:#636875; --line:#E6E8EE; --accent:#4F46E5; --accent-soft:#EEF0FF; --glow:rgba(79,70,229,.14);
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0C0D12;--surface:#14161D;--ink:#F2F3F7;--mid:#9499A8;--line:#23262F;--accent:#8B8CFF;--accent-soft:#1D1F3A;--glow:rgba(139,140,255,.14)}}
+:root[data-theme="dark"]{--bg:#0C0D12;--surface:#14161D;--ink:#F2F3F7;--mid:#9499A8;--line:#23262F;--accent:#8B8CFF;--accent-soft:#1D1F3A;--glow:rgba(139,140,255,.14)}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Geist,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:880px;margin:0 auto;padding:0 24px}
+.mono{font-family:"Geist Mono",ui-monospace,Menlo,Consolas,monospace}
+
+header.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav .navrow{display:flex;justify-content:space-between;align-items:center;height:60px}
+.brand{font-weight:600;text-decoration:none}
+.nav nav{display:flex;gap:26px;align-items:center}
+.nav nav a{text-decoration:none;color:var(--mid);font-size:.92rem;transition:color .2s}
+.nav nav a:hover{color:var(--ink)}
+#theme{background:none;border:1px solid var(--line);color:var(--mid);border-radius:8px;width:34px;height:34px;cursor:pointer}
+#theme:hover{color:var(--ink)}
+
+/* hero */
+.hero{position:relative;padding:120px 0 96px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(520px circle at var(--mx,70%) var(--my,30%),var(--glow),transparent 70%);pointer-events:none}
+.hero .wrap{position:relative;animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.status{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border:1px solid var(--line);background:var(--surface);border-radius:999px;font-size:.85rem;color:var(--mid);margin-bottom:28px}
+.status i{width:8px;height:8px;border-radius:50%;background:#22C55E;box-shadow:0 0 0 4px rgba(34,197,94,.18)}
+h1{font-size:clamp(2.8rem,8vw,5.2rem);line-height:1.02;letter-spacing:-.045em;font-weight:700;margin:0 0 20px}
+h1 span{color:var(--mid)}
+.lead{font-size:1.2rem;color:var(--mid);max-width:50ch;margin:0 0 36px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;padding:12px 22px;border-radius:10px;font-weight:500;text-decoration:none;font-size:.95rem;transition:transform .15s,background .2s}
+.btn.p{background:var(--ink);color:var(--bg)}
+.btn.p:hover{transform:translateY(-1px)}
+.btn.s{border:1px solid var(--line);background:var(--surface)}
+.btn.s:hover{border-color:var(--mid)}
+
+/* sections */
+section{padding:84px 0;border-top:1px solid var(--line)}
+.label{font-size:.85rem;color:var(--accent);font-weight:600;margin:0 0 10px}
+h2{font-size:clamp(1.7rem,4vw,2.3rem);letter-spacing:-.03em;margin:0 0 40px;line-height:1.15}
+
+/* skills */
+.groups{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.group{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:26px}
+.group h3{margin:0 0 16px;font-size:1rem;font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0;list-style:none}
+.chips li{font-size:.88rem;padding:6px 13px;border-radius:8px;background:var(--accent-soft);color:var(--accent);font-weight:500}
+
+/* projects */
+.projects{display:grid;gap:16px}
+.proj{display:grid;grid-template-columns:1fr auto;gap:8px 24px;padding:26px;background:var(--surface);border:1px solid var(--line);border-radius:14px;transition:border-color .2s,transform .2s;text-decoration:none}
+.proj:hover{border-color:var(--accent)}
+.proj h3{margin:0;font-size:1.2rem;letter-spacing:-.02em}
+.proj .yr{color:var(--mid);font-size:.82rem}
+.proj p{grid-column:1/-1;margin:0;color:var(--mid);max-width:60ch}
+.tags{grid-column:1/-1;display:flex;gap:8px;flex-wrap:wrap;padding:0;margin:8px 0 0;list-style:none}
+.tags li{font-size:.75rem;color:var(--mid);border:1px solid var(--line);padding:3px 10px;border-radius:6px}
+
+/* about */
+.about{display:grid;grid-template-columns:1.3fr 1fr;gap:56px}
+.about p{margin:0;font-size:1.1rem;color:var(--mid)}
+.facts{list-style:none;margin:0;padding:0}
+.facts li{display:flex;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px solid var(--line);font-size:.95rem}
+.facts span{color:var(--mid)}
+
+/* contact */
+.mail{font-size:clamp(1.5rem,5vw,2.6rem);font-weight:600;letter-spacing:-.035em;text-decoration:none;word-break:break-all;border-bottom:2px solid var(--accent)}
+.mail:hover{color:var(--accent)}
+.clinks{display:flex;gap:22px;margin-top:28px;flex-wrap:wrap;color:var(--mid)}
+.clinks a:hover{color:var(--ink)}
+footer{padding:28px 0;border-top:1px solid var(--line);color:var(--mid);font-size:.85rem}
+
+@media (max-width:720px){
+  .groups,.about{grid-template-columns:1fr}
+  .about{gap:32px}
+  .hero{padding:72px 0 64px}
+  .nav nav a.h{display:none}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero .wrap{animation:none}.proj,.btn{transition:none}}
+
+/* 3D */
+.hero .wrap{max-width:1040px}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:32px;align-items:center}
+h1{font-size:clamp(2.6rem,6.4vw,4.4rem)}
+.scene{perspective:900px;display:grid;place-items:center;height:340px;position:relative}
+.scene::after{content:"";position:absolute;bottom:20px;width:200px;height:26px;border-radius:50%;background:radial-gradient(closest-side,var(--glow),transparent);filter:blur(6px)}
+.rig{transform-style:preserve-3d;transition:transform .2s ease-out}
+.cube{width:170px;height:170px;position:relative;transform-style:preserve-3d;animation:spin 26s linear infinite}
+.face{position:absolute;inset:0;display:grid;place-items:center;border:1.5px solid var(--accent);border-radius:14px;background:color-mix(in srgb,var(--accent) 9%,transparent);font:500 1.5rem "Geist Mono",ui-monospace,monospace;color:var(--accent)}
+.f1{transform:translateZ(85px)}.f2{transform:rotateY(180deg) translateZ(85px)}
+.f3{transform:rotateY(90deg) translateZ(85px)}.f4{transform:rotateY(-90deg) translateZ(85px)}
+.f5{transform:rotateX(90deg) translateZ(85px)}.f6{transform:rotateX(-90deg) translateZ(85px)}
+@keyframes spin{from{transform:rotateX(-22deg) rotateY(0)}to{transform:rotateX(-22deg) rotateY(360deg)}}
+.tilt{transform-style:preserve-3d;transition:transform .25s ease-out,border-color .2s,box-shadow .25s;will-change:transform}
+.tilt:hover{box-shadow:0 18px 40px -18px var(--glow),0 6px 16px -10px rgba(0,0,0,.2)}
+.groups,.projects{perspective:1000px}
+@media (max-width:720px){.hero-grid{grid-template-columns:1fr}.scene{height:240px}.cube{transform-origin:center;scale:.78}}
+@media (prefers-reduced-motion:reduce){.cube{animation:none;transform:rotateX(-22deg) rotateY(30deg)}.tilt,.rig{transition:none}}
+
+/* coding top bar */
+.topbar{background:var(--surface);border-bottom:1px solid var(--line);font:400 .78rem "Geist Mono",ui-monospace,Menlo,Consolas,monospace;color:var(--mid)}
+.topbar .wrap{display:flex;align-items:center;gap:14px;height:34px;max-width:1040px}
+.dots{display:flex;gap:6px}.dots i{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.dots i:nth-child(1){background:#FF5F57}.dots i:nth-child(2){background:#FEBC2E}.dots i:nth-child(3){background:#28C840}
+.topbar .path{color:var(--ink)}
+.topbar .prompt{color:var(--accent)}
+.topbar .cur{display:inline-block;width:7px;height:.95em;background:var(--accent);vertical-align:text-bottom;margin-left:2px;animation:blink 1s steps(2) infinite}
+.topbar .meta{margin-left:auto;white-space:nowrap}
+@keyframes blink{50%{opacity:0}}
+.brand b{color:var(--accent);font-weight:600}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 100px)}
+@media (max-width:720px){.topbar .meta,.topbar .path{display:none}}
+@media (prefers-reduced-motion:reduce){.topbar .cur{animation:none}}
+</style>
+</head>
+<body>
+<header class="nav"><div class="topbar" aria-hidden="true"><div class="wrap"><span class="dots"><i></i><i></i><i></i></span><span class="path">~/omar/portfolio</span><span><span class="prompt">$</span> <span id="term"></span><span class="cur"></span></span><span class="meta">main ✓ &nbsp; JavaScript</span></div></div><div class="wrap navrow">
+  <a class="brand" href="#top"><b>&lt;</b>Omar<b> /&gt;</b></a>
+  <nav aria-label="Main">
+    <a class="h" href="#skills">Skills</a><a class="h" href="#projects">Projects</a><a class="h" href="#about">About</a><a href="#contact">Contact</a>
+    <button id="theme" aria-label="Toggle light and dark theme">◐</button>
+  </nav>
+</div></header>
+
+<main id="top">
+<div class="hero" id="hero"><div class="wrap hero-grid"><div>
+  <div class="status"><i></i>Available for new projects</div>
+  <h1>Hi, I'm Omar.<br><span>I build software for the web.</span></h1>
+  <p class="lead">I'm a developer who cares about clean code, fast interfaces and reliable backends. I turn ideas into products that are simple to use.</p>
+  <div class="cta"><a class="btn p" href="#projects">View projects</a><a class="btn s" href="#contact">Contact me</a></div>
+</div><div class="scene" aria-hidden="true"><div class="rig" id="rig"><div class="cube"><div class="face f1">JS</div><div class="face f2">Py</div><div class="face f3">SQL</div><div class="face f4">Git</div><div class="face f5">{ }</div><div class="face f6">&lt;/&gt;</div></div></div></div></div></div>
+
+<section id="skills"><div class="wrap">
+  <p class="label">Skills</p>
+  <h2>Tools I work with</h2>
+  <div class="groups" id="groups"></div>
+</div></section>
+
+<section id="projects"><div class="wrap">
+  <p class="label">Projects</p>
+  <h2>Selected work</h2>
+  <div class="projects" id="projs"></div>
+</div></section>
+
+<section id="about"><div class="wrap about">
+  <div><p class="label">About</p><h2>A bit about me</h2><p id="about-text"></p></div>
+  <ul class="facts" id="facts" style="align-self:end"></ul>
+</div></section>
+
+<section id="contact"><div class="wrap">
+  <p class="label">Contact</p>
+  <h2>Let's work together</h2>
+  <a class="mail" id="mail" href="#">omar@hotmail.com</a>
+  <div class="clinks" id="links"></div>
+</div></section>
+</main>
+<footer><div class="wrap">© <span id="yr"></span> Omar. All rights reserved.</div></footer>
+
+<script>
+/* ===== EDIT THIS BLOCK TO MAKE THE SITE YOURS ===== */
+const ME = {
+  email: "omar@hotmail.com",
+  about: "I started programming because I like building things that people actually use. Today I work across the stack, from interfaces to APIs and databases, and I keep learning something new every week.",
+  facts: [["Role","Software developer"],["Focus","Web & backend"],["Languages","English, Arabic, Greek"],["Status","Open to work"]],
+  links: [["GitHub","https://github.com/"],["LinkedIn","https://linkedin.com/"]],
+  skills: {
+    "Frontend": ["JavaScript","TypeScript","React","Vue.js","HTML & CSS","Tailwind CSS"],
+    "Backend": ["Python","Node.js","Java","C#","SQL","REST APIs"],
+    "Tools": ["Git & GitHub","Docker","Linux","VS Code","Postman","CI/CD"],
+    "Core": ["Algorithms","Data structures","Testing","Clean architecture","Problem solving"]
+  },
+  projects: [
+    ["Task Planner","A fast planning app with offline support and sync across devices.",["React","Node.js","PostgreSQL"],"2025"],
+    ["Price Tracker","Watches online prices and sends an alert when they drop.",["Python","SQLite","Automation"],"2025"],
+    ["Open-source CLI","A small command line tool that saves developers time every day.",["TypeScript","Testing","npm"],"2026"]
+  ]
+};
+/* ================================================== */
+const $=s=>document.querySelector(s);
+$("#mail").textContent=ME.email; $("#mail").href="mailto:"+ME.email;
+$("#about-text").textContent=ME.about; $("#yr").textContent=new Date().getFullYear();
+$("#facts").innerHTML=ME.facts.map(f=>`<li><span>${f[0]}</span><b>${f[1]}</b></li>`).join("");
+$("#links").innerHTML=ME.links.map(l=>`<a href="${l[1]}" target="_blank" rel="noopener">${l[0]}</a>`).join("");
+$("#groups").innerHTML=Object.entries(ME.skills).map(([g,l])=>`<div class="group"><h3>${g}</h3><ul class="chips">${l.map(s=>`<li>${s}</li>`).join("")}</ul></div>`).join("");
+$("#projs").innerHTML=ME.projects.map(p=>`<article class="proj"><h3>${p[0]}</h3><span class="yr mono">${p[3]}</span><p>${p[1]}</p><ul class="tags mono">${p[2].map(t=>`<li>${t}</li>`).join("")}</ul></article>`).join("");
+
+/* theme toggle */
+$("#theme").onclick=()=>{const r=document.documentElement,d=matchMedia("(prefers-color-scheme:dark)").matches;r.dataset.theme=(r.dataset.theme||(d?"dark":"light"))==="dark"?"light":"dark"};
+
+/* soft glow follows cursor in hero */
+const hero=$("#hero");
+hero.addEventListener("pointermove",e=>{const r=hero.getBoundingClientRect();hero.style.setProperty("--mx",(e.clientX-r.left)+"px");hero.style.setProperty("--my",(e.clientY-r.top)+"px")});
+
+/* 3D: cube follows pointer, cards tilt */
+const rig=$("#rig"),still=matchMedia("(prefers-reduced-motion:reduce)").matches;
+if(!still){
+  hero.addEventListener("pointermove",e=>{const r=hero.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;rig.style.transform=`rotateX(${-y*28}deg) rotateY(${x*28}deg)`});
+  hero.addEventListener("pointerleave",()=>rig.style.transform="");
+  document.querySelectorAll(".proj,.group").forEach(el=>{
+    el.classList.add("tilt");
+    el.addEventListener("pointermove",e=>{if(e.pointerType==="touch")return;const r=el.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;el.style.transform=`perspective(900px) rotateX(${-y*6}deg) rotateY(${x*6}deg) translateZ(0)`});
+    el.addEventListener("pointerleave",()=>el.style.transform="");
+  });
+}
+
+/* typing terminal in top bar */
+const cmds=["whoami  # Omar, software developer","npm run build","git commit -m \"ship it\"","git push origin main","python app.py"];
+const term=$("#term");
+if(still){term.textContent=cmds[0]}
+else{let c=0,i=0,del=false;(function t(){
+  const w=cmds[c];
+  if(!del){term.textContent=w.slice(0,++i);if(i===w.length){del=true;return setTimeout(t,1800)}setTimeout(t,60)}
+  else{term.textContent=w.slice(0,--i);if(i===0){del=false;c=(c+1)%cmds.length;return setTimeout(t,350)}setTimeout(t,22)}
+})()}
+</script>
+</body>
+</html>
